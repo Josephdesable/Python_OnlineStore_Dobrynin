@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Магазин{% endblock %}</title>
+    
+    <!-- Bootstrap для красоты (как в вашем product_detail) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- ОБЩАЯ навигация для ВСЕХ страниц -->
+    <nav class="navbar navbar-light bg-light mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'product_list' %}">🏪 Магазин</a>
+            <span class="navbar-text">
+                <a href="{% url 'product_list' %}">Главная</a> | 
+                <a href="/admin/">Админка</a>
+            </span>
+        </div>
+    </nav>
+
+    <!-- БЛОК для УНИКАЛЬНОГО контента каждой страницы -->
+    <div class="container">
+        {% block content %}
+        <!-- Сюда Django подставит контент из дочерних шаблонов -->
+        {% endblock %}
+    </div>
+
+    <!-- ОБЩИЙ подвал для ВСЕХ страниц -->
+    <footer class="mt-5 py-3 bg-light text-center">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Мой магазин. Все товары подлинные!</p>
+        </div>
+    </footer>
+</body>
+</html>
