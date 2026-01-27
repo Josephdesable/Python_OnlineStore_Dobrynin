@@ -1,0 +1,28 @@
+[
+{
+  "model": "shop.inventoryitem",
+  "pk": "12345",
+  "fields": {
+    "name": "Лимон",
+    "description": "Цитрус",
+    "image": "",
+    "price_rub": "150.00",
+    "stock_qty": 30,
+    "is_active": true,
+    "created_at": "2025-12-15T20:41:56.446Z"
+  }
+},
+{
+  "model": "shop.inventoryitem",
+  "pk": "123456",
+  "fields": {
+    "name": "Апельсин",
+    "description": "Кислый цитрус",
+    "image": "",
+    "price_rub": "200.00",
+    "stock_qty": 35,
+    "is_active": true,
+    "created_at": "2026-01-03T08:08:10.712Z"
+  }
+}
+]
