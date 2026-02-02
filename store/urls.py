@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 # market/urls.py
 
 from django.contrib import admin
@@ -22,9 +23,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('shop.urls')),
-    path('accounts/', include('users.urls')),
+    path("admin/", admin.site.urls),
+    path("", include("shop.urls")),
+    path("accounts/", include("users.urls")),
 ]
 
 # Добавь это для режима разработки (DEBUG=True)
