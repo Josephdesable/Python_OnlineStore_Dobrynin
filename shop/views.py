@@ -4,7 +4,13 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import AddToCartForm
-from .models import Cart, InventoryItem, ShoppingCartItem
+from .models import (
+    Cart,
+    InventoryItem,
+    OrderItem,
+    PurchaseOrder,
+    ShoppingCartItem,
+)
 
 
 def product_list(request):
@@ -57,10 +63,6 @@ def cart_view(request):
     return render(request, "shop/cart.html", {"cart_items": cart_items, "total": total})
 
 
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
-
-from .models import Cart, OrderItem, PurchaseOrder, ShoppingCartItem
 
 
 @login_required
