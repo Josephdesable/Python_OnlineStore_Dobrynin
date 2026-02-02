@@ -1,7 +1,9 @@
 # shop/admin.py
 
 from django.contrib import admin
-from .models import InventoryItem, ShoppingCartItem, PurchaseOrder, OrderItem, Cart
+
+from .models import (Cart, InventoryItem, OrderItem, PurchaseOrder,
+                     ShoppingCartItem)
 
 
 # Товары

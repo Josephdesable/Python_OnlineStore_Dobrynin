@@ -1,9 +1,10 @@
 # shop/views.py
 
-from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import InventoryItem, ShoppingCartItem, Cart
+from django.shortcuts import get_object_or_404, redirect, render
+
 from .forms import AddToCartForm
+from .models import Cart, InventoryItem, ShoppingCartItem
 
 
 def product_list(request):
@@ -56,9 +57,10 @@ def cart_view(request):
     return render(request, "shop/cart.html", {"cart_items": cart_items, "total": total})
 
 
-from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Cart, ShoppingCartItem, PurchaseOrder, OrderItem
+from django.shortcuts import redirect, render
+
+from .models import Cart, OrderItem, PurchaseOrder, ShoppingCartItem
 
 
 @login_required
