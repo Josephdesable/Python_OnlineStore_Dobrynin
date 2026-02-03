@@ -1,0 +1,21 @@
+<!-- shop/templates/shop/product_detail.html -->
+{% extends 'shop/base.html' %}
+
+{% block content %}
+<h1>{{ product.name }}</h1>
+
+{% if product.image %}
+    <img src="{{ product.image.url }}" class="img-fluid mb-3" style="max-height: 300px; object-fit: contain;">
+{% else %}
+    <div class="alert alert-warning">Изображение отсутствует</div>
+{% endif %}
+
+<p>{{ product.description }}</p>
+<p><strong>Цена:</strong> {{ product.price_rub }} руб.</p>
+<p><strong>Остаток:</strong> {{ product.stock_qty }} шт.</p>
+
+<!-- КНОПКА ДОБАВЛЕНИЯ В КОРЗИНУ -->
+<a href="{% url 'add_to_cart' product.sku %}" class="btn btn-primary">Добавить в корзину</a>
+<a href="{% url 'product_list' %}" class="btn btn-secondary">← Назад</a>
+
+{% endblock %}
