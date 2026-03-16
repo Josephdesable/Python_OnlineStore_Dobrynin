@@ -28,6 +28,6 @@ urlpatterns = [
     path("accounts/", include("users.urls")),
 ]
 
-# Добавь это для режима разработки (DEBUG=True)
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

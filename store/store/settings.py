@@ -12,6 +12,13 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 import os
 from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+if os.path.exists(BASE_DIR.parent / ".env"):
+    from dotenv import load_dotenv
+    load_dotenv()
+    
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,16 +85,15 @@ WSGI_APPLICATION = "store.wsgi.application"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "online_store_db",  # ← имя твоей БД
-        "USER": "joseph",  # ← твой пользователь
-        "PASSWORD": "Bebavova1990",  # ← твой пароль
-        "HOST": "localhost",
-        "PORT": "5432",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME', 'online_store_db'),
+        'USER': os.getenv('DB_USER', 'joseph'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'Bebavova1990'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -125,6 +131,8 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 LOGIN_REDIRECT_URL = "/"
 
 LOGOUT_REDIRECT_URL = "/"
@@ -136,3 +144,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+if __name__ == "__main__":
+    import os
+    if os.environ.get("RUN_MAIN") != "true":
+        # Это нужно только для wait_for_db
+        pass

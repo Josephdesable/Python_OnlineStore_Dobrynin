@@ -56,7 +56,7 @@ def add_to_cart(request, sku):
 @login_required
 def cart_view(request):
     cart, created = Cart.objects.get_or_create(client=request.user)
-    cart_items = ShoppingCartItem.objects.filter(cart=cart)  # ← фильтруем по cart
+    cart_items = ShoppingCartItem.objects.filter(cart=cart)
 
     total = sum(item.item.price_rub * item.quantity for item in cart_items)
 

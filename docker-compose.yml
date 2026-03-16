@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: onlinestore
+      POSTGRES_USER: django
+      POSTGRES_PASSWORD: django_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data      
+  web:
+    build: .
+    command: >
+      sh -c "
+      	sleep 5 &&
+        python store/manage.py migrate &&
+        python store/manage.py loaddata stock_balance.json &&
+        python store/manage.py collectstatic --noinput &&
+        python store/manage.py runserver 0.0.0.0:8000"
+        
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DEBUG=False
+      - SECRET_KEY=django-insecure-docker-secret-key-change-in-prod
+      - DB_NAME=onlinestore
+      - DB_USER=django
+      - DB_PASSWORD=django_pass
+      - DB_HOST=db
+      - ALLOWED_HOSTS=localhost,127.0.0.1
+
+volumes:
+  postgres_data:
