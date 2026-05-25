@@ -1,0 +1,29 @@
+# Секреты
+.env
+
+# Система контроля версий
+.git
+.gitignore
+
+# Кэш Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Виртуальные окружения
+myenv/
+venv/
+.venv/
+
+# Локальная база данных (если используется)
+db.sqlite3
+
+# Логи
+*.log
+
+# Настройки IDE
+.vscode/
+.idea/
+
+# Сам файл .dockerignore не нужен в образе
+.dockerignore

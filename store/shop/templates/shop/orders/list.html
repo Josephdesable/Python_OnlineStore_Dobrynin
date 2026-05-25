@@ -1,0 +1,21 @@
+<!-- store/shop/templates/shop/orders/list.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Мои заказы</h2>
+{% if orders %}
+  <ul>
+  {% for order in orders %}
+    <li>
+      Заказ №{{ order.id }} от {{ order.created_at|date:"d.m.Y H:i" }} — 
+      <strong>{{ order.get_status_display }}</strong>, 
+      сумма: {{ order.total_rub }} руб.
+      <a href="{% url 'order_detail' order.id %}">Подробнее</a>
+    </li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>У вас пока нет заказов.</p>
+{% endif %}
+<a href="{% url 'product_list' %}">Вернуться в магазин</a>
+{% endblock %}

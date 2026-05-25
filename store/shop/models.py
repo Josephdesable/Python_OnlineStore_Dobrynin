@@ -65,7 +65,7 @@ class ShoppingCartItem(models.Model):
 
     def __str__(self):
         return (
-            f"{self.item.name} × {self.quantity} (в корзине {self.cart.user.username})"
+            f"{self.item.name} × {self.quantity} (в корзине {self.cart.client.username})"
         )
 
 
